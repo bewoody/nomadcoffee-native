@@ -1,6 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
-import { Dimensions, Text, Image } from "react-native";
+import { Dimensions, Image } from "react-native";
 import styled from "styled-components/native";
 import { seeCoffeeShops_seeCoffeeShops } from "../__generated__/seeCoffeeShops";
 
@@ -21,6 +21,15 @@ const CafeInfo = styled.View`
 const CafeName = styled.Text`
   font-weight: 600;
   font-size: 18px;
+`;
+const CategoryData = styled.View`
+  margin-top: 6px;
+  flex-direction: row;
+`;
+const CategoryName = styled.Text`
+  font-size: 16px;
+  color: black;
+  margin-right: 8px;
 `;
 
 interface IShopProps {
@@ -50,6 +59,11 @@ export default function Shop({ shop }: IShopProps) {
       />
       <CafeInfo>
         <CafeName>{shop.name}</CafeName>
+        <CategoryData>
+          {shop.categories?.map((category: any, index: number) => (
+            <CategoryName key={index}>#{category?.name}</CategoryName>
+          ))}
+        </CategoryData>
       </CafeInfo>
     </PhotoItemWrapper>
   );
