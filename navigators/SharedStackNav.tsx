@@ -1,13 +1,15 @@
 import { createStackNavigator } from "@react-navigation/stack";
 import React from "react";
-import { Image } from "react-native";
+import { Image, TouchableOpacity } from "react-native";
 import { useTheme } from "styled-components";
+import { Ionicons } from "@expo/vector-icons";
 import Home from "../screens/Home";
 import Login from "../screens/Login";
 import Me from "../screens/Me";
 import Profile from "../screens/Profile";
 import Search from "../screens/Search";
 import Shop from "../screens/Shop";
+import UploadAvatar from "../screens/UploadAvatar";
 
 interface ISharedStackNavProps {
   screenName: string;

@@ -10,10 +10,10 @@ import { AppearanceProvider } from "react-native-appearance";
 import { ThemeProvider } from "styled-components";
 import { darkTheme, lightTheme } from "./styles/styles";
 import { useColorScheme } from "react-native";
-import Nav from "./navigators/Nav";
 import { ApolloProvider } from "@apollo/client";
 import client, { isLoggedInVar, logUserOut, tokenVar } from "./apollo";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import LoggedInNav from "./navigators/LoggedInNav";
 
 export default function App() {
   const [loading, setLoading] = useState(true);
@@ -50,7 +50,7 @@ export default function App() {
         <ThemeProvider theme={color === "dark" ? darkTheme : lightTheme}>
           <StatusBar />
           <NavigationContainer>
-            <Nav />
+            <LoggedInNav />
           </NavigationContainer>
         </ThemeProvider>
       </AppearanceProvider>

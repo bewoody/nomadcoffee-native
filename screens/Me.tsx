@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
-import { Text, Image } from "react-native";
+import { Text, TouchableOpacity } from "react-native";
 import styled from "styled-components/native";
 import ScreenLayout from "../components/ScreenLayout";
 import useMe from "../hooks/useMe";
 import { RouteProps } from "../types";
+import UploadAvatar from "./UploadAvatar";
 
 const Avatar = styled.Image`
   width: 100px;
@@ -37,13 +38,15 @@ export default function Me({ navigation }: RouteProps) {
   }, []);
   return (
     <ScreenLayout loading={loading}>
-      {data?.me?.avatarURL ? (
-        <Avatar source={{ uri: data?.me?.avatarURL }} />
-      ) : (
-        <DefaultAvatar>
-          <Username>{InitialName}</Username>
-        </DefaultAvatar>
-      )}
+      <TouchableOpacity onPress={() => navigation.navigate("Upload")}>
+        {data?.me?.avatarURL ? (
+          <Avatar source={{ uri: data?.me?.avatarURL }} />
+        ) : (
+          <DefaultAvatar>
+            <Username>{InitialName}</Username>
+          </DefaultAvatar>
+        )}
+      </TouchableOpacity>
       <Text>{data?.me?.username}</Text>
     </ScreenLayout>
   );
